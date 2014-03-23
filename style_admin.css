@@ -1,0 +1,109 @@
+@charset "utf-8";
+/* CSS Document */
+
+*
+{
+	margin:0px;
+	padding:0px;
+	font-family:Verdana, Geneva, sans-serif;	
+}
+
+body
+{
+	height:100%;
+	width:100%;
+	background-color:#999;	
+	overflow:hidden;
+}
+
+#cont
+{
+	position:relative;
+	float:left;	
+	height: 100%;
+	width: 100%;
+	overflow:hidden;
+}
+
+#sidepanel
+{
+	//position:relative;
+	float:left;
+	display:block;
+	height:670px;
+	width:200px;
+	background-color:#333333;
+	box-shadow:2px -2px 8px;
+}
+
+#menu
+{
+	
+}
+
+#menu ul
+{
+	position:relative;	
+}
+
+#menu ul li
+{
+	padding:8%;	
+	text-align:right;
+}
+
+#menu ul li a
+{
+	text-decoration:none;
+	color:#FFFFFF;
+	font-size:17px;
+}
+
+
+#content
+{
+	position:relative;
+	float:left;
+	height:100%;
+	width:auto;
+}
+
+.insidecont
+{
+	position:relative;
+	float:left;
+	display:block;
+	padding: 5%;
+	width: 100%;
+}
+
+#vUp h1
+{
+	color:#FFF;
+	margin-bottom:5%;
+	font-size:35px;
+}
+
+.currentSel
+{
+	background-color:#39F;	
+	text-decoration:underline;
+	border-radius: 2px;	
+}
+
+.remove_cont
+{
+	padding-top:100%;
+		
+}
+
+.submit
+{
+	height:20spx;
+	width:200px;
+	display:block;
+	background-color:#333;
+	color:#FFF;
+	padding:5px;
+	border:none;	
+}
