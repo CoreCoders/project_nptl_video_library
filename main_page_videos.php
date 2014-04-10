@@ -52,7 +52,6 @@ Do the following if you're using your customized build of modernizr (http://www.
 	
 	$uid=$_SESSION['uid']; //'rutvik3107031';//$_SESSION['uid'];
 	require_once('functions.js');
-
 ?>
 
 <body>
@@ -63,6 +62,69 @@ Do the following if you're using your customized build of modernizr (http://www.
 
 
 <div class="gridContainer">
+
+
+
+
+
+
+
+
+<div id="black-back" onClick="hideUserEditBox()"></div>
+
+
+	<div id="subscription-box">
+    	
+        <span style="float:left; margin-left:1%; font-weight:bold; margin-bottom:4px;">Users</span>
+        
+        <span style="float:right; padding-right:32%; font-weight:bold; margin-bottom:4px;">Your Subscriptions</span>
+    
+    	<div id="subscription-left">
+        
+        	<div class="subscription">
+            	<ul id="subscriptionAvailable">
+                </ul>                
+            </div>
+            
+        </div>
+        
+        <div id="subscription-right">
+        	
+            
+            <div class="subscription">
+				<ul id="subscribedTo">
+                </ul>
+            </div>
+            
+            
+        </div>
+	
+    </div>
+
+
+
+    <div id="user-edit-box">
+    	<table width="100%" cellpadding="5">
+        
+            <tr><td><img src="img/userIcon.gif" height="80" width="80"/></td><td><input type="file" style="margin:0 0 0 5%;"/>(Only jpg 500x500 Max:2MB)</td></tr>
+            
+            <tr><td>First Name:</td><td><input type="text" name="fname" value="<?php echo $_SESSION['fname']; ?>" /></td></tr>
+    
+            <tr><td>Last Name:</td><td><input type="text" name="lname" value="<?php echo $_SESSION['lname']; ?>" /></td></tr>
+            
+            <tr><td>About You:</td><td><textarea name="abt" style="width:147px;"><?php echo $_SESSION['abt']; ?></textarea></td></tr>
+    
+            <tr><td>Contact:</td><td><input type="text" name="cnt" value="<?php echo $_SESSION['cnt']; ?>"/></td></tr>
+    
+            <tr><td>Email:</td><td><input type="text" name="email" value="<?php echo $_SESSION['email']; ?>"/></td></tr>
+    
+            <tr><td colspan="2" align="right"><input type="button" class="myBtn" value="Save Changes" onClick="saveUserInfo()"/></td></tr>
+
+        
+        </table>
+        
+        
+   	</div>
 
 
 
@@ -96,6 +158,11 @@ Do the following if you're using your customized build of modernizr (http://www.
 
 <div id="main-container">
 
+	<div id="notification">
+    	
+    </div>
+
+
     <div id="top-bar">
         <div id="title3">
         	
@@ -115,15 +182,21 @@ Do the following if you're using your customized build of modernizr (http://www.
             <div id="vline" style="float: right; height: 50px; margin-top: -42px; margin-right: 18px;"></div>
             
             <ul id="menu" style="margin: -28px 0px 0px 8px;">
-    <li style="margin:-50px 0px 0px 128px; padding:0"><a href="##" onMouseOver="" style="background:none; padding:0;"><div id="arrow" style="float: right; height: 15px; width: 15px; background-image:url(img/arr.png); margin: 0px 0px 0px 0px;"></div></a>
+    <li style="margin:-50px 0px 0px 128px; padding:0"><a href="##" onMouseOver="showMenu()" onMouseOut="hideMenu()" style="background:none; padding:0;"><div id="arrow" ></div></a>
 
-        <ul class="sub-menu">
+        <ul id="sub-menu" onMouseOver="showMenu()" onMouseOut="hideMenu()">
+        	 <li>
+            	<a href="#" style="width: 130px;" onClick="showUserEditBox()">My Info</a>
+            </li>
+            <li>
+                <a href="#" onClick="loadSubscriptionBox()" style="width: 130px;">Manage Subscriptions</a>
+            </li>  
             <li>
                 <a href="javascript:void();" onclick="document.getElementById('underlay').style.display='block'; document.getElementById('lightbox').style.display='block'; document.getElementById('lightbox-inside').style.display='block';" style="width: 130px;">Change Password</a>
             </li>
             <li>
                 <a href="tryLogout.php" style="width: 130px;">Logout</a>
-            </li>
+            </li>          
         </ul>
     </li>
 </ul>   
@@ -152,6 +225,7 @@ Do the following if you're using your customized build of modernizr (http://www.
     </div>
     
     
+	
 
     
     
@@ -164,6 +238,8 @@ Do the following if you're using your customized build of modernizr (http://www.
         <a href="#"><li>My Subscriptions</li></a>
     </ul>
     </div>
+    
+    
     
     <div id="video-cont">
         
@@ -219,7 +295,7 @@ Do the following if you're using your customized build of modernizr (http://www.
 			}
 			
 			
-				echo'<li><a id=vid'.$id.' href="setRecent.php?id='.$id.'&uid='.$uid.'"><img src="'.$thumbnail.'"></a><a href="##" style="margin-left: 3%"><h3 id=vid'.$id.' onClick="openVideo(this.id)">',$title,'</h3></a><p>',$desc,'</p><div id="vidExtra"><a href="##" title="Add to Favourites" id=',$id,' onClick="setFav(this.id,\''.$uid.'\')"><div style="height:20px;width:20px;float:left;border:none;margin-top:2px; margin-right:6px; margin-left:6px; background-image:url(img/star'.$html.'.png);background-repeat:no-repeat;background-size:20px;"></div></a><a href="##" title="Like" id=',$id,' onClick="setLike(this.id,\''.$uid.'\')"><div style="height:20px;width:20px;float:left;border:none;margin-top:2px; margin-right:6px; margin-left:8px; background-image:url(img/like.png);background-repeat:no-repeat;background-size:20px;"></div></a><a href="##" title="Add to Watch Later" id=',$id,' onClick="setWlater(this.id,\''.$uid.'\')"><div style="height:20px;width:20px;float:left;border:none;margin-top:2px; margin-left:6px; background-image:url(img/wlater.png);background-repeat:no-repeat;background-size:20px;"></div></a></div></li><div id="ftr" style="margin-bottom: 2%; margin-top:2%; background: -webkit-gradient(linear, 0 0, 100% 0, from(#666), to(#666), color-stop(50%, #c6c6c6));"></div>';
+				echo'<li><a id=vid'.$id.' href="setRecent.php?id='.$id.'&uid='.$uid.'"><img src="'.$thumbnail.'"></a><a href="##" style="margin-left: 3%"><h3 id=vid'.$id.' onClick="openVideo(this.id)">',$title,'</h3></a><p>',$desc,'</p><div id="vidExtra"><a href="##" title="Add to Favourites" id=',$id,' onClick="setFav(this.id)"><div style="height:20px;width:20px;float:left;border:none;margin-top:2px; margin-right:6px; margin-left:6px; background-image:url(img/star'.$html.'.png);background-repeat:no-repeat;background-size:20px;"></div></a><a href="##" title="Like" id=',$id,' onClick="setLike(this.id)"><div style="height:20px;width:20px;float:left;border:none;margin-top:2px; margin-right:6px; margin-left:8px; background-image:url(img/like.png);background-repeat:no-repeat;background-size:20px;"></div></a><a href="##" title="Add to Watch Later" id=',$id,' onClick="setWlater(this.id)"><div style="height:20px;width:20px;float:left;border:none;margin-top:2px; margin-left:6px; background-image:url(img/wlater.png);background-repeat:no-repeat;background-size:20px;"></div></a></div></li><div id="ftr" style="margin-bottom: 2%; margin-top:2%; background: -webkit-gradient(linear, 0 0, 100% 0, from(#666), to(#666), color-stop(50%, #c6c6c6));"></div>';
             
 			
 			}

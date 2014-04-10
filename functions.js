@@ -1,7 +1,38 @@
-
 <script type="text/javascript">
 
-
+			
+			
+			
+			
+			
+			function  showMenu()
+			{
+				document.getElementById("sub-menu").style.display='block';	
+			}
+			
+			function  hideMenu()
+			{
+				document.getElementById("sub-menu").style.display='none';	
+			}
+			
+			function showSubscriptionBox()
+			{
+					
+			}
+			
+			function hideUserEditBox()
+			{
+				document.getElementById("black-back").style.display='none';
+				document.getElementById("user-edit-box").style.display='none';
+				document.getElementById("subscription-box").style.display='none';
+			}
+			
+			function showUserEditBox()
+			{
+				document.getElementById("black-back").style.display='block';
+				document.getElementById("user-edit-box").style.display='block';
+			}
+			
 
 			function clearAll()
 			{
@@ -12,6 +43,47 @@
 				var s = document.getElementById("changePassResponse");
 				s.innerHTML="";
 				document.getElementById('chngPassBtn').style.display='none';
+			}
+			
+			
+			function chkMail(x)
+			{
+				var pattern="^[\\w-_\.]*[\\w-_\.]\@[\\w]\.+[\\w]+[\\w]$";
+				var regex=new RegExp(pattern);
+				if(regex.test(x))
+				{
+					return true;
+				}
+				else
+				{
+					alert("Invalid Email");
+				}
+				
+			}
+			
+			function chkString(x)
+			{
+				var regexp=new RegExp("[a-zA-Z]");
+				if(regexp.test(x))
+				{
+					return true;
+				}
+				else
+				{
+					alert("Name and Last name must contain string");
+				}	
+			}
+			
+			function chkNumber(x)
+			{
+				if(isNaN(x)==false && x!="")
+				{
+					return true;
+				}
+				else
+				{
+					alert("Invalid Contact Number");
+				}
 			}
 			
 	   
@@ -34,7 +106,179 @@
 				}
 				
 			}
-	   
+			
+			function loadSubscriptionBox()
+			{
+				var xmlhttp;
+				try
+				{
+					xmlhttp = new XMLHttpRequest;
+				}
+				catch(e)
+				{
+					xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+				}
+				
+				if(xmlhttp)
+				{
+									
+						xmlhttp.open("GET" ,"loadSubscription.php");
+						
+						xmlhttp.onreadystatechange = function()
+						{		
+								
+							document.getElementById("subscriptionAvailable").innerHTML=this.responseText;
+							
+							document.getElementById("black-back").style.display='block';
+							document.getElementById("subscription-box").style.display='block';
+							
+								
+						}
+						
+						xmlhttp.send(null);
+				}
+			}
+			
+			
+			function subscribeUser(id)
+			{
+				var x="sa"+id;
+				
+				var res="";
+				
+				var html=document.getElementById(x).innerHTML;				
+				
+				var xmlhttp;
+				try
+				{
+					xmlhttp = new XMLHttpRequest;
+				}
+				catch(e)
+				{
+					xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+				}
+				
+				if(xmlhttp)
+				{
+									
+						xmlhttp.open("GET" ,"subscribe.php?id="+id+"&html="+html);
+						
+						xmlhttp.onreadystatechange = function()
+						{		
+						
+							if(xmlhttp.readyState == 4 && xmlhttp.status == 200)
+							{
+								
+							//alert(this.responseText);
+							res=this.responseText;
+							
+							
+							document.getElementById("subscribedTo").innerHTML +=res;
+							
+							document.getElementById(x).remove();
+							
+							//document.getElementById("black-back").style.display='block';
+							//document.getElementById("subscription-box").style.display='block';
+							}
+							
+								
+						}
+						
+						
+						
+						xmlhttp.send(null);
+				}				
+			}
+			
+			
+			function unsubscribeUser(id)
+			{
+				
+				var x="st"+id;
+				
+				var res="";
+				
+				var html=document.getElementById(x).innerHTML;				
+				
+				var xmlhttp;
+				try
+				{
+					xmlhttp = new XMLHttpRequest;
+				}
+				catch(e)
+				{
+					xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+				}
+				
+				if(xmlhttp)
+				{
+									
+						xmlhttp.open("GET" ,"unsubscribe.php?id="+id+"&html="+html);
+						
+						xmlhttp.onreadystatechange = function()
+						{		
+						
+							if(xmlhttp.readyState == 4 && xmlhttp.status == 200)
+							{
+								
+							//alert(this.responseText);
+							res=this.responseText;
+							
+							
+							document.getElementById("subscriptionAvailable").innerHTML +=res;
+							
+							document.getElementById(x).remove();
+							
+							//document.getElementById("black-back").style.display='block';
+							//document.getElementById("subscription-box").style.display='block';
+							}
+							
+								
+						}
+						
+						xmlhttp.send(null);
+				}				
+			}
+			
+			
+	   		function saveUserInfo()
+			{
+				var xmlhttp;
+				try
+				{
+					xmlhttp = new XMLHttpRequest;
+				}
+				catch(e)
+				{
+					xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+				}
+				
+				if(xmlhttp)
+				{
+					
+					var form = document['form'];
+					var fname = form['fname'].value;
+					var lname = form['lname'].value;
+					var abt = form['abt'].value;
+					var cnt = form['cnt'].value;
+					var email= form['email'].value;
+					
+					if(chkMail(email)==true && chkNumber(cnt)==true && chkString(fname)==true && chkString(lname)==true)
+					{
+					
+						xmlhttp.open("GET" ,"saveUserInfo.php?fname=" + fname + "&lname=" + lname + "&abt=" + abt + "&cnt=" + cnt + "&email" + email , true);
+						
+						xmlhttp.onreadystatechange = function()
+						{		
+								
+								hideUserEditBox();
+								
+						}
+						
+						xmlhttp.send(null);
+					}
+				}
+			}
 	   
 	   
 	   		function changePass()
@@ -64,9 +308,7 @@
 					{		
 							
 							document.getElementById('lightbox-inside').style.display='none';
-							
-							
-							
+														
 							var s = document.getElementById("changePassResponse")	//document.createElement("select");
 							//alert(this.responseText);
 							s.innerHTML="";
@@ -88,7 +330,7 @@
 			
 
 	  		
-			function setFav(id_no,u_id)
+			function setFav(id_no)
 			{
 				var xmlhttp;
 				try
@@ -104,11 +346,11 @@
 				{
 					//alert(id_no);
 					var id=id_no;
-					var uid=u_id;
+					//var uid=u_id;
 					//alert(uid);
 					//var form = document['form3'];
 					//var branch = form['branch'].value;
-					xmlhttp.open("POST" ,"setFav.php?id=" + id + "&uid=" + uid , false);
+					xmlhttp.open("POST" ,"setFav.php?id=" + id , false);
 					
 					xmlhttp.onreadystatechange = function()
 					{		
@@ -116,7 +358,9 @@
 							//document.createElement("select");
 							//alert(this.responseText);
 							var s=document.getElementById(id);
+							var n=document.getElementById("notification");
 							s.innerHTML=this.responseText;
+							n.innerHTML="Added To Favourites";
 					}
 					
 					xmlhttp.send(null);
@@ -124,7 +368,7 @@
 			}
 			
 			
-			function setLike(id_no,u_id)
+			function setLike(id_no)
 			{
 				var xmlhttp;
 				try
@@ -140,19 +384,22 @@
 				{
 					//alert(id_no);
 					var id=id_no;
-					var uid=u_id;
+					//var uid=u_id;
 					//alert(uid);
 					//var form = document['form3'];
 					//var branch = form['branch'].value;
-					xmlhttp.open("POST" ,"setLike.php?id=" + id + "&uid=" + uid , false);
+					xmlhttp.open("POST" ,"setLike.php?id=" + id , false);
 					
 					xmlhttp.onreadystatechange = function()
 					{		
 							//var s = document.getElementById("subject");
 							//document.createElement("select");
 							//alert(this.responseText);
+							var n=document.getElementById("notification");
 							var s=document.getElementById("likes");
+							n.innerHTML="Liked Successfully";
 							s.innerHTML=this.responseText;
+							
 					}
 					
 					xmlhttp.send(null);
@@ -161,7 +408,7 @@
 			}
 			
 			
-			function setWlater(id_no,u_id)
+			function setWlater(id_no)
 			{
 				var xmlhttp;
 				try
@@ -177,11 +424,11 @@
 				{
 					//alert(id_no);
 					var id=id_no;
-					var uid=u_id;
+					//var uid=u_id;
 					//alert(uid);
 					//var form = document['form3'];
 					//var branch = form['branch'].value;
-					xmlhttp.open("POST" ,"setWlater.php?id=" + id + "&uid=" + uid , false);
+					xmlhttp.open("POST" ,"setWlater.php?id=" + id , false);
 					
 					xmlhttp.onreadystatechange = function()
 					{		
@@ -190,6 +437,9 @@
 							//alert(this.responseText);
 							//var s=document.getElementById("likes");
 							//s.innerHTML=this.responseText;
+							var n=document.getElementById("notification");
+							n.innerHTML="Added To Watch Later";
+							
 					}
 					
 					xmlhttp.send(null);

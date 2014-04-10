@@ -1,8 +1,9 @@
 <?php
 
+	session_start();
 	
 	$id=$_GET['id'];
-	$uid=$_GET['uid'];
+	$uid=$_SESSION['uid'];
 	$flag=0;
 	
 	$style="height:20px;width:20px;float:left;border:none;margin-top:2px; margin-right:6px; margin-left:6px;background-repeat:no-repeat;background-size:20px;";

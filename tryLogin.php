@@ -24,11 +24,19 @@
 		$row=mysql_fetch_array($result);
 		
 		$status=$_SESSION['status']=1;
-			$_SESSION['uid']=$id;
+		$_SESSION['uid']=$id;
+		
+		$_SESSION['fname']=$row['fname'];
+		$_SESSION['lname']=$row['lname'];
+		$_SESSION['abt']=$row['abt'];
+		$_SESSION['cnt']=$row['cnt'];
+		$_SESSION['pic']=$row['pic'];
+		$_SESSION['email']=$row['email'];
+		
 		if($row['activation']==0)
 		{
-			//header("location:");
 			
+			//header("location:")			
 			
 			$query=("UPDATE `users` SET `status`='$status', `activation`='1' WHERE `users`.`uid` = '$id'");	
 			$result=mysql_query($query);
