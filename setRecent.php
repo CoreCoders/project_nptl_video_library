@@ -2,7 +2,7 @@
 
 	$id=$_GET['id'];
 	$lvdate=date('Y-m-d H:i:s');
-	$uid=$_GET['uid'];
+	$uid=$_SESSION['uid'];
 	
 	require_once('connection.php');
 	

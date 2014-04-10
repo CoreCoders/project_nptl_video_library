@@ -53,9 +53,7 @@ Do the following if you're using your customized build of modernizr (http://www.
 
 <body>
 
-       <script type="text/javascript">
-	   
-	   		
+       <script type="text/javascript">		
 			
 			function signUpFun()
 			{
@@ -141,7 +139,7 @@ Do the following if you're using your customized build of modernizr (http://www.
     
     </div>
     
-  	 <div id="vline" style="height: 250px; margin: 8% 2% 0% 0%;"></div>
+  	 <div id="vline" style="height: 250px ; margin: 8% 2% 0% 0%; background:-webkit-gradient(linear, 0 0, 0 100%, from(#666), to(#666), color-stop(50%, #FFFFFF));background:-moz-linear-gradient(top, #666 0%, #FFFFFF 50%, #FFFFFF 51%, #666 100%);"></div>
      
      
      <div id="signUpCont" style="float:left; height:auto; width:275px; margin-top:10%;"><span style="float:left; margin-bottom:15px; color:#FFF; font-size:24px; width:95%;">Still Not Having GPERI E-Resource Sharing Account?</span><br><br><br>

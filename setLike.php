@@ -1,7 +1,9 @@
 <?php
 
+	session_start();
+
 	$id=$_GET['id'];
-	$uid=$_GET['uid'];
+	$uid=$_SESSION['uid'];
 	$flag=0;
 	$html="Likes:";
 	$likes=0;

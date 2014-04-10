@@ -106,9 +106,9 @@ Do the following if you're using your customized build of modernizr (http://www.
   <div id="login-box">
   
   
+  <div id="top-bar">
   
-  
-  		<div id="userInfo-box">
+  	<div id="userInfo-box">
         
         	<div id="userImg"></div>
             
@@ -117,9 +117,9 @@ Do the following if you're using your customized build of modernizr (http://www.
             <div id="vline" style="float: right; height: 50px; margin-top: -42px; margin-right: 18px;"></div>
             
             <ul id="menu" style="margin: -28px 0px 0px 8px;">
-    <li style="margin:-50px 0px 0px 128px; padding:0"><a href="##" onMouseOver="" style="background:none; padding:0;"><div id="arrow" style="float: right; height: 15px; width: 15px; background-image:url(img/arr.png); margin: 0px 0px 0px 0px;"></div></a>
+    <li style="margin:-50px 0px 0px 128px; padding:0"><a href="##" onMouseOver="showMenu()" onMouseOut="hideMenu()" style="background:none; padding:0;"><div id="arrow"></div></a>
 
-        <ul class="sub-menu">
+        <ul id="sub-menu" onMouseOver="showMenu()" onMouseOut="hideMenu()">
             <li>
                 <a href="javascript:void();" onclick="document.getElementById('underlay').style.display='block'; document.getElementById('lightbox').style.display='block'; document.getElementById('lightbox-inside').style.display='block';" style="width: 130px;">Change Password</a>
             </li>
@@ -132,6 +132,12 @@ Do the following if you're using your customized build of modernizr (http://www.
         
         
         </div>
+  
+  
+  </div>
+  
+  		
+
   
   
   
@@ -163,9 +169,7 @@ Do the following if you're using your customized build of modernizr (http://www.
     
     </div>
     
-    <div id="vline"></div>
-    
-    <div id="title2"><h2>Recent Updates</h2></div>
+    <div id="vline" style="background:-webkit-gradient(linear, 0 0, 0 100%, from(#666), to(#666), color-stop(50%, #FFFFFF));background:-moz-linear-gradient(top, #666 0%, #FFFFFF 50%, #FFFFFF 51%, #666 100%);"></div>
     
     <div id="recentUpdateCont">
     
@@ -192,10 +196,10 @@ Do the following if you're using your customized build of modernizr (http://www.
 				
 				echo '<div style="height:90px; width:400px; overflow:hidden; margin-top:20px; margin-bottom:20px;">
             	
-				<h3 style="font-size:18px; margin:0px; padding:0px;">',$title,'</h3>
-                <p style="text-indent:50px; text-align:justify; margin-left:20px; margin-top:0px; margin-bottom:0px; height:50px; overflow:hidden;">',$desc,'
+				<h3 style="font-size:18px; font-weight:100; margin:0px; padding:0px; color:#fff;">',$title,'</h3>
+                <p style="text-indent:50px; text-align:justify; margin-left:20px; color:#ccc; margin-top:0px; margin-bottom:0px; height:50px; overflow:hidden;">',$desc,'
                 </p>
-                <h5 style="float:right; margin:2px 0px 0px 0px; padding:0px; color:#FFF;">Uploaded On- ',$date,'</h5>
+                <h5 style="float:right; margin:2px 0px 0px 0px; padding:0px; color:#333;">Uploaded On- ',$date,'</h5>
             	            
             </div>';
 				

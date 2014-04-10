@@ -112,9 +112,9 @@ Do the following if you're using your customized build of modernizr (http://www.
             <div id="vline" style="float: right; height: 50px; margin-top: -42px; margin-right: 18px;"></div>
             
             <ul id="menu" style="margin: -28px 0px 0px 8px;">
-    <li style="margin:-50px 0px 0px 128px; padding:0"><a href="##" onMouseOver="" style="background:none; padding:0;"><div id="arrow" style="float: right; height: 15px; width: 15px; background-image:url(img/arr.png); margin: 0px 0px 0px 0px;"></div></a>
+    <li style="margin:-50px 0px 0px 128px; padding:0"><a href="##" onMouseOver="showMenu()" onMouseOut="hideMenu()" style="background:none; padding:0;"><div id="arrow" ></div></a>
 
-        <ul class="sub-menu">
+        <ul id="sub-menu" onMouseOver="showMenu()" onMouseOut="hideMenu()">
             <li>
                 <a href="javascript:void();" onclick="document.getElementById('underlay').style.display='block'; document.getElementById('lightbox').style.display='block'; document.getElementById('lightbox-inside').style.display='block';" style="width: 130px;">Change Password</a>
             </li>
