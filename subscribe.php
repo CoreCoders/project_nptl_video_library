@@ -4,11 +4,11 @@
 
 	$html=$_GET['html'];
 	$id=$_GET['id'];
-	$uid=$_SESSION['uid'];
+	$iduid=$_SESSION['iduid'];
 
 	require_once('connection.php');
 	
-	$query=('INSERT INTO `db_gperi`.`subscription` (`id`, `uid`, `to`) VALUES (NULL, "'.$uid.'", "'.$id.'")');
+	$query=('INSERT INTO `db_gperi`.`subscription` (`id`, `uid`, `to`) VALUES (NULL, "'.$iduid.'", "'.$id.'")');
 			
 	$result=mysql_query($query);
 			

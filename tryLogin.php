@@ -32,6 +32,7 @@
 		$_SESSION['cnt']=$row['cnt'];
 		$_SESSION['pic']=$row['pic'];
 		$_SESSION['email']=$row['email'];
+		$_SESSION['iduid']=$row['id'];
 		
 		if($row['activation']==0)
 		{

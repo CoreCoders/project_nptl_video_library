@@ -65,26 +65,7 @@ Do the following if you're using your customized build of modernizr (http://www.
 
 
 
-<div id="underlay">
-</div>
-
-<div id="lightbox">
-        <a style="float:right; margin:5px 5px 0px 0px;" href="javascript:void();" onclick="document.getElementById('underlay').style.display='none'; document.getElementById('lightbox').style.display='none'; clearAll();"><img src="img/close.png"/></a>
-        
-        
-        
-        <div id="lightbox-inside" style="text-align:right; margin:8% 16% 0% 15%;">
-        
-            <h2>Current Password:  <input type="password" name="oldPass" onKeyUp="matchPass()"/></h2><br>
-            <h2>New Password:  <input type="password" name="newPass" onKeyUp="matchPass()"/></h2><br>
-            <h2>Confirm New Password:  <input type="password" name="conNewPass" onKeyUp="matchPass()"/></h2>
-            <input type="button" id="chngPassBtn" name="chngPass" value="Change Password" onClick="changePass()" style="float:right; display:none; margin-top:20px; height:35px; width:150px; color:#FFF; background-color:#006ab8; border:none;"/>
-        
-		</div>
-        
-        <div id="changePassResponse" style="text-align:center; margin-top:20%;"></div>
-
-</div>
+	<?php  include('staticComponents.inc');  ?>
 
 
 
@@ -120,12 +101,18 @@ Do the following if you're using your customized build of modernizr (http://www.
     <li style="margin:-50px 0px 0px 128px; padding:0"><a href="##" onMouseOver="showMenu()" onMouseOut="hideMenu()" style="background:none; padding:0;"><div id="arrow"></div></a>
 
         <ul id="sub-menu" onMouseOver="showMenu()" onMouseOut="hideMenu()">
+        	 <li>
+            	<a href="#" style="width: 130px;" onClick="showUserEditBox()">My Info</a>
+            </li>
+            <li>
+                <a href="#" onClick="loadSubscriptionBoxLeft()" style="width: 130px;">Manage Subscriptions</a>
+            </li>  
             <li>
                 <a href="javascript:void();" onclick="document.getElementById('underlay').style.display='block'; document.getElementById('lightbox').style.display='block'; document.getElementById('lightbox-inside').style.display='block';" style="width: 130px;">Change Password</a>
             </li>
             <li>
                 <a href="tryLogout.php" style="width: 130px;">Logout</a>
-            </li>
+            </li>          
         </ul>
     </li>
 </ul>   
@@ -197,7 +184,7 @@ Do the following if you're using your customized build of modernizr (http://www.
 				echo '<div style="height:90px; width:400px; overflow:hidden; margin-top:20px; margin-bottom:20px;">
             	
 				<h3 style="font-size:18px; font-weight:100; margin:0px; padding:0px; color:#fff;">',$title,'</h3>
-                <p style="text-indent:50px; text-align:justify; margin-left:20px; color:#ccc; margin-top:0px; margin-bottom:0px; height:50px; overflow:hidden;">',$desc,'
+                <p style="text-align:justify; color:#ccc; margin-top:5px; word-wrap:break-word; margin-bottom:0px; height:50px; overflow:hidden;">',$desc,'
                 </p>
                 <h5 style="float:right; margin:2px 0px 0px 0px; padding:0px; color:#333;">Uploaded On- ',$date,'</h5>
             	            
