@@ -120,7 +120,7 @@ Do the following if you're using your customized build of modernizr (http://www.
   
   <div id="title"><h1><img src="img/gperi.png" style="height:70px; width:70px; margin:-10px 0px 0px 0px; padding:0px;" />GPERI E-Resource Sharing</h1></div>
   
-  <div id="login-box" style="width: 600px; margin: 0% 25% 5% 25%; min-width: 600px;">
+  <div id="login-box" style="width: 50%;margin: 0% 25% 5% 25%;min-width: 600px;">
   
   	<div id="login-box-inside" style="margin: 10% 5% 12% 12%; width:200px;">
   	<h2>Enter GPERI ID:</h2><br>
@@ -142,7 +142,7 @@ Do the following if you're using your customized build of modernizr (http://www.
   	 <div id="vline" style="height: 250px ; margin: 8% 2% 0% 0%; background:-webkit-gradient(linear, 0 0, 0 100%, from(#666), to(#666), color-stop(50%, #FFFFFF));background:-moz-linear-gradient(top, #666 0%, #FFFFFF 50%, #FFFFFF 51%, #666 100%);"></div>
      
      
-     <div id="signUpCont" style="float:left; height:auto; width:275px; margin-top:10%;"><span style="float:left; margin-bottom:15px; color:#FFF; font-size:24px; width:95%;">Still Not Having GPERI E-Resource Sharing Account?</span><br><br><br>
+     <div id="signUpCont" style="float:right; height:auto; width:275px; margin-top:10%;"><span style="float:left; margin-bottom:15px; color:#FFF; font-size:24px; width:95%;">Still Not Having GPERI E-Resource Sharing Account?</span><br><br><br>
 		<span style="color:#ccc; font-size:10px;">*Enter Your GPERI Mail ID</span>
 
      <input type="text" name="signUpId" style="margin-bottom:-2px;"/> <font color="#FFFFFF">@gperi.ac.in</font><br>

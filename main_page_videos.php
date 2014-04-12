@@ -70,84 +70,7 @@ Do the following if you're using your customized build of modernizr (http://www.
 
 
 
-<div id="black-back" onClick="hideUserEditBox()"></div>
-
-
-	<div id="subscription-box">
-    	
-        <span style="float:left; margin-left:1%; font-weight:bold; margin-bottom:4px;">Users</span>
-        
-        <span style="float:right; padding-right:32%; font-weight:bold; margin-bottom:4px;">Your Subscriptions</span>
-    
-    	<div id="subscription-left">
-        
-        	<div class="subscription">
-            	<ul id="subscriptionAvailable">
-                </ul>                
-            </div>
-            
-        </div>
-        
-        <div id="subscription-right">
-        	
-            
-            <div class="subscription">
-				<ul id="subscribedTo">
-                </ul>
-            </div>
-            
-            
-        </div>
-	
-    </div>
-
-
-
-    <div id="user-edit-box">
-    	<table width="100%" cellpadding="5">
-        
-            <tr><td><img src="img/userIcon.gif" height="80" width="80"/></td><td><input type="file" style="margin:0 0 0 5%;"/>(Only jpg 500x500 Max:2MB)</td></tr>
-            
-            <tr><td>First Name:</td><td><input type="text" name="fname" value="<?php echo $_SESSION['fname']; ?>" /></td></tr>
-    
-            <tr><td>Last Name:</td><td><input type="text" name="lname" value="<?php echo $_SESSION['lname']; ?>" /></td></tr>
-            
-            <tr><td>About You:</td><td><textarea name="abt" style="width:147px;"><?php echo $_SESSION['abt']; ?></textarea></td></tr>
-    
-            <tr><td>Contact:</td><td><input type="text" name="cnt" value="<?php echo $_SESSION['cnt']; ?>"/></td></tr>
-    
-            <tr><td>Email:</td><td><input type="text" name="email" value="<?php echo $_SESSION['email']; ?>"/></td></tr>
-    
-            <tr><td colspan="2" align="right"><input type="button" class="myBtn" value="Save Changes" onClick="saveUserInfo()"/></td></tr>
-
-        
-        </table>
-        
-        
-   	</div>
-
-
-
-<div id="underlay">
-</div>
-
-<div id="lightbox">
-        <a style="float:right; margin:5px 5px 0px 0px;" href="javascript:void();" onclick="document.getElementById('underlay').style.display='none'; document.getElementById('lightbox').style.display='none'; clearAll();"><img src="img/close.png"/></a>
-        
-        
-        
-        <div id="lightbox-inside" style="text-align:right; margin:8% 16% 0% 15%;">
-        
-            <h2>Current Password:  <input type="password" name="oldPass" onKeyUp="matchPass()"/></h2><br>
-            <h2>New Password:  <input type="password" name="newPass" onKeyUp="matchPass()"/></h2><br>
-            <h2>Confirm New Password:  <input type="password" name="conNewPass" onKeyUp="matchPass()"/></h2>
-            <input type="button" id="chngPassBtn" name="chngPass" value="Change Password" onClick="changePass()" style="float:right; display:none; margin-top:20px; height:35px; width:150px; color:#FFF; background-color:#006ab8; border:none;"/>
-        
-		</div>
-        
-        <div id="changePassResponse" style="text-align:center; margin-top:20%;"></div>
-
-</div>
+<?php   include('staticComponents.inc');     ?>
 
 
 
@@ -163,68 +86,9 @@ Do the following if you're using your customized build of modernizr (http://www.
     </div>
 
 
-    <div id="top-bar">
-        <div id="title3">
-        	
-            <h2 style="margin:0px; padding:0px;"><a href="choicePage.php" style="text-decoration:none; color:#FFF;"><img src="img/gperi.png" style="height:42px; width:42px; margin:0px; padding:0px;" />&nbsp;<u>GPERI E-Resource Sharing</u></a><?php
-			echo " > ".$_SESSION['branch']." > ".$_SESSION['subject']." > Videos"; 
-			 ?></h2>
-        </div>
-        
-        
-        
-        <div id="userInfo-box">
-        
-        	<div id="userImg"></div>
-            
-            <div id="userNm">Welcome,<br><?php echo $uid; ?></div>
-            
-            <div id="vline" style="float: right; height: 50px; margin-top: -42px; margin-right: 18px;"></div>
-            
-            <ul id="menu" style="margin: -28px 0px 0px 8px;">
-    <li style="margin:-50px 0px 0px 128px; padding:0"><a href="##" onMouseOver="showMenu()" onMouseOut="hideMenu()" style="background:none; padding:0;"><div id="arrow" ></div></a>
-
-        <ul id="sub-menu" onMouseOver="showMenu()" onMouseOut="hideMenu()">
-        	 <li>
-            	<a href="#" style="width: 130px;" onClick="showUserEditBox()">My Info</a>
-            </li>
-            <li>
-                <a href="#" onClick="loadSubscriptionBox()" style="width: 130px;">Manage Subscriptions</a>
-            </li>  
-            <li>
-                <a href="javascript:void();" onclick="document.getElementById('underlay').style.display='block'; document.getElementById('lightbox').style.display='block'; document.getElementById('lightbox-inside').style.display='block';" style="width: 130px;">Change Password</a>
-            </li>
-            <li>
-                <a href="tryLogout.php" style="width: 130px;">Logout</a>
-            </li>          
-        </ul>
-    </li>
-</ul>   
-        
-        
-        </div>
-        
-        
-        
-        <div id="search-box">
-            <div id="search-box-cont">
-                Search For Videos:&nbsp;&nbsp;
-                
-                <input type="text" name="searchText"/>
-                
-            </div>
-            
-            <input type="submit" value="" id="btn-search2" />
-            
-        </div>
-        
-        
-        
-        
-        
-    </div>
+   
     
-    
+    <?php   include('topBar.inc');     ?>
 	
 
     

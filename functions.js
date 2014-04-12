@@ -107,7 +107,7 @@
 				
 			}
 			
-			function loadSubscriptionBox()
+			function loadSubscriptionBoxLeft()
 			{
 				var xmlhttp;
 				try
@@ -122,12 +122,47 @@
 				if(xmlhttp)
 				{
 									
-						xmlhttp.open("GET" ,"loadSubscription.php");
+						xmlhttp.open("GET" ,"loadSubscription.php?flag=0");
 						
 						xmlhttp.onreadystatechange = function()
 						{		
 								
 							document.getElementById("subscriptionAvailable").innerHTML=this.responseText;
+							
+							loadSubscriptionBoxRight();
+							
+							//document.getElementById("black-back").style.display='block';
+							//document.getElementById("subscription-box").style.display='block';
+							
+								
+						}
+						
+						xmlhttp.send(null);
+				}
+			}
+			
+			
+			function loadSubscriptionBoxRight()
+			{
+				var xmlhttp;
+				try
+				{
+					xmlhttp = new XMLHttpRequest;
+				}
+				catch(e)
+				{
+					xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+				}
+				
+				if(xmlhttp)
+				{
+									
+						xmlhttp.open("GET" ,"loadSubscription.php?flag=1");
+						
+						xmlhttp.onreadystatechange = function()
+						{		
+								
+							document.getElementById("subscribedTo").innerHTML=this.responseText;
 							
 							document.getElementById("black-back").style.display='block';
 							document.getElementById("subscription-box").style.display='block';
@@ -395,10 +430,21 @@
 							//var s = document.getElementById("subject");
 							//document.createElement("select");
 							//alert(this.responseText);
-							var n=document.getElementById("notification");
-							var s=document.getElementById("likes");
-							n.innerHTML="Liked Successfully";
-							s.innerHTML=this.responseText;
+							
+							
+							try
+							{
+								document.getElementById("notification").innerHTML="Liked Successfully";
+								document.getElementById("likes").innerHTML=this.responseText;	
+							}
+							catch(e)
+							{
+								document.getElementById("likes").innerHTML=this.responseText;
+							}
+							
+							
+							
+							
 							
 					}
 					

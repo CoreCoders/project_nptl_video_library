@@ -73,94 +73,16 @@ Do the following if you're using your customized build of modernizr (http://www.
 
 
 
-<div id="underlay">
-</div>
-
-<div id="lightbox">
-        <a style="float:right; margin:5px 5px 0px 0px;" href="javascript:void();" onclick="document.getElementById('underlay').style.display='none'; document.getElementById('lightbox').style.display='none'; clearAll();"><img src="img/close.png"/></a>
-        
-        
-        
-        <div id="lightbox-inside" style="text-align:right; margin:8% 16% 0% 15%;">
-        
-            <h2>Current Password:  <input type="password" name="oldPass" onKeyUp="matchPass()"/></h2><br>
-            <h2>New Password:  <input type="password" name="newPass" onKeyUp="matchPass()"/></h2><br>
-            <h2>Confirm New Password:  <input type="password" name="conNewPass" onKeyUp="matchPass()"/></h2>
-            <input type="button" id="chngPassBtn" name="chngPass" value="Change Password" onClick="changePass()" style="float:right; display:none; margin-top:20px; height:35px; width:150px; color:#FFF; background-color:#006ab8; border:none;"/>
-        
-		</div>
-        
-        <div id="changePassResponse" style="text-align:center; margin-top:20%;"></div>
-
-</div>
-
-
-
-
+	<?php  include('staticComponents.inc');  ?>
 
 
 
 
 <div id="main-container">
 
-    <div id="top-bar">
-        <div id="title3">
-        	
-            <h2 style="margin:0px; padding:0px;"><a href="choicePage.php" style="text-decoration:none; color:#FFF;"><img src="img/gperi.png" style="height:42px; width:42px; margin:0px; padding:0px;" />&nbsp;<u>GPERI E-Resource Sharing</u></a><?php
-			echo " > ".$_SESSION['branch']." > ".$_SESSION['subject']." > Videos"; 
-			 ?></h2>
-        </div>
-        
-        
-
-        
-        <div id="userInfo-box">
-        
-        	<div id="userImg"></div>
-            
-            <div id="userNm">Welcome,<br><?php echo $_SESSION['uid']; ?></div>
-            
-            <div id="vline" style="float: right; height: 50px; margin-top: -42px; margin-right: 18px;"></div>
-            
-            <ul id="menu" style="margin: -28px 0px 0px 8px;">
-    <li style="margin:-50px 0px 0px 128px; padding:0"><a href="##" onMouseOver="showMenu()" onMouseOut="hideMenu()" style="background:none; padding:0;"><div id="arrow" ></div></a>
-
-        <ul id="sub-menu" onMouseOver="showMenu()" onMouseOut="hideMenu()">
-            <li>
-                <a href="javascript:void();" onclick="document.getElementById('underlay').style.display='block'; document.getElementById('lightbox').style.display='block'; document.getElementById('lightbox-inside').style.display='block';" style="width: 130px;">Change Password</a>
-            </li>
-            <li>
-                <a href="tryLogout.php" style="width: 130px;">Logout</a>
-            </li>
-        </ul>
-    </li>
-</ul>   
-        
-        
-        </div>
-
-        
-        
-        
-        <div id="search-box">
-            <div id="search-box-cont">
-                Search For Videos:&nbsp;&nbsp;
-                
-                <input type="text" name="searchText"/>
-                
-            </div>
-            
-            <input type="submit" value="" id="btn-search2" />
-            
-        </div>
-        
-        
-        
-        
-        
-    </div>
     
     
+    <?php  include('topBar.inc');  ?>
 
     
     

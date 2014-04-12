@@ -4,11 +4,11 @@
 
 	$html=$_GET['html'];
 	$id=$_GET['id'];
-	$uid=$_SESSION['uid'];
+	$iduid=$_SESSION['iduid'];
 
 	require_once('connection.php');
 	
-	$query=('DELETE FROM `subscription` WHERE `uid`="'.$uid.'" AND `to`="'.$id.'"');
+	$query=('DELETE FROM `subscription` WHERE `uid`="'.$iduid.'" AND `to`="'.$id.'"');
 			
 	$result=mysql_query($query);
 			

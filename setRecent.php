@@ -1,4 +1,6 @@
 <?php
+	
+	session_start();
 
 	$id=$_GET['id'];
 	$lvdate=date('Y-m-d H:i:s');

@@ -10,13 +10,10 @@
 	$nFav="background-image:url(img/star0.png);";
 	$yFav="background-image:url(img/star1.png);";
 
-	require_once('connection.php');
-	
-	
+	require_once('connection.php');	
 	
 	$query="SELECT `fav` FROM `$uid` WHERE `$uid`.`vid` = '$id'";
-	$result=mysql_query($query);
-	
+	$result=mysql_query($query);	
 	
 	if(mysql_num_rows($result) > 0)
 	{
@@ -31,8 +28,7 @@
 		
 			$result=mysql_query($query);
 		
-			mysql_close($conn);
-		
+			mysql_close($conn);		
 		
 			echo "<div style='".$style.$yFav."'></div>";
 		}
