@@ -115,6 +115,9 @@ Do the following if you're using your customized build of modernizr (http://www.
 		$likes=0;
 		
 		
+		$topic="";
+		
+		
 		$branch=$_SESSION['branch'];
 		$subject=$_SESSION['subject'];
 			
@@ -132,14 +135,14 @@ Do the following if you're using your customized build of modernizr (http://www.
 			
 		$result=mysql_query($query);
 			
-		mysql_close($conn);
+		//mysql_close($conn);
 		
 		while($row=mysql_fetch_array($result))
 			{
 			
 				
 			$id=$row['id'];
-			
+			$topic=$row['topic'];
 			$original=$row['path'];
 			$thumbnail=$row['thumbnail'];
 			if($row['title']!="")
@@ -171,7 +174,43 @@ Do the following if you're using your customized build of modernizr (http://www.
 			}
 			
 			
+			echo "</div>";
 			
+			echo '<div id="similarVideosBox">';
+			
+			
+			$topic=str_replace(",","%' or topic like '%",$topic);
+			$topic="topic like '%".$topic."'";
+			
+			$query="SELECT * FROM videos WHERE $topic";
+			
+			$result=mysql_query($query);
+			
+			while($row=mysql_fetch_array($result))
+			{
+				
+				$thumbnail=$row['thumbnail'];
+				
+				if($row['title']!="")
+				{
+					$title=$row['title'];
+				}
+				else
+				{
+					$title=$row['name'];
+				}
+				
+				$desc=$row['desc'];
+				
+				echo '<div id="similarVideoCont"><div id="similarVideo"><a href="##" onClick=""><img src="'.$thumbnail.'"></a></div><a href="##"><h3 onClick="" class="similarVideoTitle">'.$title.'</h3></a><p class="similarVideoDesc">'.$desc.'"</p></div>';	
+				
+			}
+			
+			
+			
+			
+			
+			echo "</div>";
 			
 		
 			
@@ -179,24 +218,8 @@ Do the following if you're using your customized build of modernizr (http://www.
 			
 	
 	?>
-    </div>
     
-    <div id="similarVideosBox">
-    
-        
-        
-        <div id="similarVideoCont">
-        	<div id="similarVideo"><a href="##" onClick=""><img src="video_gallery_videolb/thumbnails/colored pencils.jpg"></a></div>
-            <a href="##"><h3 onClick="" class="similarVideoTitle">hellozzz</h3></a>
-            <p class="similarVideoDesc">kjs ahf jksdh fdsh fjk ds hfkjdshfd sfhdskjf hfjk dshf asfb afjdfd adsbfhdajf ahfjadhfj dsahfjdf</p>
-        </div>
-        
-        
-        
-        
-        
-            
-    </div>
+   
     
     
     </div>

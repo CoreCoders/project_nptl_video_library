@@ -496,7 +496,7 @@ width: 98.2%;
 {
 margin-top: 0px;
 float: left;
-margin-left: 3%;
+margin-left: 0%;
 color: #FFF;
 margin-right: 0;
 font: 1.3em/25px Arial, Helvetica, sans-serif;
@@ -677,6 +677,7 @@ ul#menu li {
 	width:164px;
 	//background-color:#006;
 	margin:0px 0px 0px 6px;
+	overflow: hidden;
 }
 
 .similarVideoDesc
