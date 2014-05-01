@@ -23,6 +23,8 @@
 			$query=("UPDATE `$uid` SET `wlater`='1' WHERE `$uid`.`vid` = '$id'");
 		
 			$result=mysql_query($query);
+			
+			$_SESSION['wlatercount']+=1;
 		
 		}
 	}
@@ -31,6 +33,8 @@
 			$query=("INSERT INTO `db_gperi`.`$uid` (`vid`, `fav`, `lvdate`, `wlater`) VALUES ('$id', '0', NULL, '1')");
 		
 			$result=mysql_query($query);
+			
+			$_SESSION['wlatercount']-=1;
 		
 			
 	}

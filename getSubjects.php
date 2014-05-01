@@ -1,7 +1,7 @@
 <?php
 
 	$subject = array (
-		"computer" => array("JAVA","CN","DAA","AP"),
+		"computer" => array("SE","IS","WAD","TOC","SP","CG"),
 		"mechanical" => array("sf","gf","gf","er","cj","kk"),
 		"civil" => array("uy","et","dtgfr","st"),
 		"electrical" => array("tgf","ghf","fg","gr")

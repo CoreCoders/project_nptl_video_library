@@ -74,10 +74,10 @@ Do the following if you're using your customized build of modernizr (http://www.
     <div id="side-panel">
     <ul>
     	<a href="main_page_videos.php"><li>Videos</li></a>
-        <a href="main_page_fav.php"><li>Fovourites</li></a>
+        <a href="main_page_fav.php"><li>Fovourites (<?php echo $_SESSION['favcount']; ?>)</li></a>
         <a href="#" class="active-tab"><li>Recently Viewed</li></a>
-        <a href="main_page_wlater.php"><li>Watch Later</li></a>
-        <a href="#"><li>My Subscriptions</li></a>
+        <a href="main_page_wlater.php"><li>Watch Later (<?php echo $_SESSION['wlatercount']; ?>)</li></a>
+        <a href="main_page_subscriptions.php"><li>My Subscriptions</li></a>
     </ul>
     </div>
     
@@ -86,7 +86,7 @@ Do the following if you're using your customized build of modernizr (http://www.
 
 	    <div id="video-cont">
         
-        <div id="rec-bar">
+        <!--<div id="rec-bar">
         
         	<ul>
             	<li><a href="">My</a></li>
@@ -94,11 +94,13 @@ Do the following if you're using your customized build of modernizr (http://www.
                 <li><a href="">Teachers</a></li>
             </ul>
         
-        </div>
+        </div>-->
+        
+        <div id="ftr" style="margin-bottom: 2%; margin-top:2%; background: -webkit-gradient(linear, 0 0, 100% 0, from(#666), to(#666), color-stop(50%, #c6c6c6));"></div>
     
     
     <ul>
-        <div id="ftr" style="margin-bottom: 2%; margin-top:2%; background: -webkit-gradient(linear, 0 0, 100% 0, from(#666), to(#666), color-stop(50%, #c6c6c6));"></div>
+        
 			<?php
 			
 			$branch=$_SESSION['branch'];
@@ -144,7 +146,7 @@ Do the following if you're using your customized build of modernizr (http://www.
 			}
 			
 			
-				echo'<li><a id=vid'.$id.' href="setRecent.php?id='.$id.'&uid='.$uid.'"><img src="'.$thumbnail.'"></a><a href="setRecent.php?id='.$id.'&uid='.$uid.'" style="margin-left: 3%"><h3 id=vid'.$id.'>',$title,'</h3></a><p>',$desc,'</p><div id="vidExtra"><a href="##" title="Add to Favourites" id=',$id,' onClick="setFav(this.id,\''.$uid.'\')"><div style="height:20px;width:20px;float:left;border:none;margin-top:2px; margin-right:6px; margin-left:6px; background-image:url(img/star'.$html.'.png);background-repeat:no-repeat;background-size:20px;"></div></a><a href="##" title="Like" id=',$id,' onClick="setLike(this.id,\''.$uid.'\')"><div style="height:20px;width:20px;float:left;border:none;margin-top:2px; margin-right:6px; margin-left:8px; background-image:url(img/like.png);background-repeat:no-repeat;background-size:20px;"></div></a><a href="##" title="Add to Watch Later" id=',$id,' onClick="setWlater(this.id,\''.$uid.'\')"><div style="height:20px;width:20px;float:left;border:none;margin-top:2px; margin-left:6px; background-image:url(img/wlater.png);background-repeat:no-repeat;background-size:20px;"></div></a></div></li><div id="ftr" style="margin-bottom: 2%; margin-top:2%; background: -webkit-gradient(linear, 0 0, 100% 0, from(#666), to(#666), color-stop(50%, #c6c6c6));"></div>';
+				echo'<li><a id=vid'.$id.' href="setRecent.php?id='.$id.'&uid='.$uid.'"><img src="'.$thumbnail.'"></a><a href="setRecent.php?id='.$id.'&uid='.$uid.'" style="margin-left: 26px;"><h3 id=vid'.$id.'>',$title,'</h3></a><p>',$desc,'</p><div id="vidExtra"><a href="##" title="Add to Favourites" id=',$id,' onClick="setFav(this.id,\''.$uid.'\')"><div style="height:20px;width:20px;float:left;border:none;margin-top:2px; margin-right:6px; margin-left:6px; background-image:url(img/star'.$html.'.png);background-repeat:no-repeat;background-size:20px;"></div></a><a href="##" title="Like" id=',$id,' onClick="setLike(this.id,\''.$uid.'\')"><div style="height:20px;width:20px;float:left;border:none;margin-top:2px; margin-right:6px; margin-left:8px; background-image:url(img/like.png);background-repeat:no-repeat;background-size:20px;"></div></a><a href="##" title="Add to Watch Later" id=',$id,' onClick="setWlater(this.id,\''.$uid.'\')"><div style="height:20px;width:20px;float:left;border:none;margin-top:2px; margin-left:6px; background-image:url(img/wlater.png);background-repeat:no-repeat;background-size:20px;"></div></a></div></li><div id="ftr" style="margin-bottom: 2%; margin-top:2%; background: -webkit-gradient(linear, 0 0, 100% 0, from(#666), to(#666), color-stop(50%, #c6c6c6));"></div>';
             
 			
             
@@ -155,6 +157,8 @@ Do the following if you're using your customized build of modernizr (http://www.
             
             
         </ul>
+        
+        <a href="" style="float:right; margin:0% 50% 1% 0%; text-decoration:none; color:#CCC; ">Load More</a>
         
     
     </div>

@@ -10,7 +10,7 @@
 	
 	$topic=str_replace(",","%' or topic like '%",$topic);
 	
-	$topic="topic like '%".$topic."'";
+	$topic="topic like '%".$topic."%'";
 	
 	echo $topic;
 

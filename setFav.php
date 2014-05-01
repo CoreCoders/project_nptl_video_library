@@ -28,7 +28,9 @@
 		
 			$result=mysql_query($query);
 		
-			mysql_close($conn);		
+			mysql_close($conn);	
+			
+			$_SESSION['favcount']+=1;	
 		
 			echo "<div style='".$style.$yFav."'></div>";
 		}
@@ -41,6 +43,7 @@
 		
 			mysql_close($conn);
 		
+			$_SESSION['favcount']-=1;
 		
 			echo "<div style='".$style.$nFav."'></div>";
 		}
@@ -52,7 +55,8 @@
 			$result=mysql_query($query);
 		
 			mysql_close($conn);
-		
+			
+			$_SESSION['favcount']+=1;		
 		
 			echo "<div style='".$style.$yFav."'></div>";
 	}

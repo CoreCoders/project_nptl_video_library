@@ -485,11 +485,40 @@
 							//s.innerHTML=this.responseText;
 							var n=document.getElementById("notification");
 							n.innerHTML="Added To Watch Later";
-							
+														
+					}	
+									
+					xmlhttp.send(null);
+				}				
+			}
+			
+			
+			function loadMore()
+			{
+				
+					var xmlhttp;
+				try
+				{
+					xmlhttp = new XMLHttpRequest;
+				}
+				catch(e)
+				{
+					xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+				}
+				
+				if(xmlhttp)
+				{
+					var div = document.getElementById("display-video-list");
+					xmlhttp.open("GET" ,"loadMore.php", true);
+					
+					xmlhttp.onreadystatechange = function()
+					{		
+							var s = document.getElementById("display-video-list");
+							s.innerHTML=this.responseText;
 					}
 					
 					xmlhttp.send(null);
-				}	
+				}
 				
 			}
 			
@@ -527,7 +556,48 @@
 			
 			
 			
-			
+			function loadVideos()
+			{
+				var xmlhttp;
+				try
+				{
+					xmlhttp = new XMLHttpRequest;
+				}
+				catch(e)
+				{
+					xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+				}
+				
+				if(xmlhttp)
+				{
+					alert("hello");
+					
+					xmlhttp.open("GET" ,"loadVideos.php", true);
+					
+					xmlhttp.onreadystatechange = function()
+					{		
+					
+							if(xmlhttp.readyState == 4 && xmlhttp.status == 200)
+							{
+								
+							//alert(this.responseText);
+							res=this.responseText;
+							
+							alert(res);
+							
+							
+							document.getElementById("display-video-list").innerHTML +=res;
+							
+							//document.getElementById(x).remove();
+							
+							//document.getElementById("black-back").style.display='block';
+							//document.getElementById("subscription-box").style.display='block';
+							}
+					}
+					
+					xmlhttp.send(null);
+				}	
+			}
 			
 			
 			

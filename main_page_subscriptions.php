@@ -39,8 +39,6 @@ Do the following if you're using your customized build of modernizr (http://www.
 
 	session_start();
 	
-	
-	
 	if(!$_SESSION['uid'])
 	{
 		session_destroy();
@@ -53,11 +51,8 @@ Do the following if you're using your customized build of modernizr (http://www.
 	}
 	
 	$uid=$_SESSION['uid']; //'rutvik3107031';//$_SESSION['uid'];
+	$iduid=$_SESSION['iduid'];
 	require_once('functions.js');
-	
-	$_SESSION['loadMoreCounter']=1;
-
-
 ?>
 
 <body>
@@ -136,11 +131,11 @@ Do the following if you're using your customized build of modernizr (http://www.
     
     <div id="side-panel">
     <ul>
-    	<a href="#" class="active-tab"><li>Videos</li></a>
+    	<a href="main_page_videos.php"><li>Videos</li></a>
         <a href="main_page_fav.php" id="fav"><li>Fovourites (<?php echo $_SESSION['favcount']; ?>)</li></a>
         <a href="main_page_recent.php"><li>Recently Viewed</li></a>
         <a href="main_page_wlater.php" id="wlater"><li>Watch Later (<?php echo $_SESSION['wlatercount']; ?>)</li></a>
-        <a href="main_page_subscriptions.php"><li>My Subscriptions</li></a>
+        <a href="#" class="active-tab"><li>My Subscriptions</li></a>
     </ul>
     </div>
     
@@ -164,45 +159,71 @@ Do the following if you're using your customized build of modernizr (http://www.
 			
 			//$query="SELECT * FROM videos WHERE branch='".$branch."' AND subject='".$subject."'";
 			
+			$query="SELECT `to` FROM `subscription` WHERE `uid`=$iduid";
 			
-			
-			$query="SELECT * FROM VIDEOS LEFT JOIN `$uid` ON VIDEOS.ID = `$uid`.VID WHERE branch='".$branch."' AND subject='".$subject."' ORDER BY id ASC LIMIT 0,10";
+			//$query="SELECT * FROM VIDEOS LEFT JOIN `$uid` ON VIDEOS.ID = `$uid`.VID WHERE branch='".$branch."' AND subject='".$subject."' LIMIT 0,10";
 			
 			$result=mysql_query($query);
 			
-			mysql_close($conn);
+			//mysql_close($conn);
 			
 			while($row=mysql_fetch_array($result))
 			{
 			
 				
-			$id=$row['id'];
+				$to=$row['to'];
+				
+				$query="SELECT `uid` FROM `users` WHERE `id`=$to";
+				
+				$result=mysql_query($query);
+				
+				while($row=mysql_fetch_array($result))
+				{
+					
+					$toid=$row['uid'];
+					
+					$query="SELECT * FROM VIDEOS LEFT JOIN `$toid` ON VIDEOS.ID = `$toid`.VID WHERE branch='".$branch."' AND subject='".$subject."' AND fav=1 OR lflag=1 ";
+					
+					$result=mysql_query($query);
+				
+					while($row=mysql_fetch_array($result))
+					{
+						
+						$id=$row['id'];
 			
-			$original=$row['path'];
-			$thumbnail=$row['thumbnail'];
-			if($row['title']!="")
-			{
-				$title=$row['title'];
-			}
-			else
-			{
-				$title=$row['name'];
-			}
-			$desc=$row['desc'];
+						$original=$row['path'];
+						$thumbnail=$row['thumbnail'];
+						if($row['title']!="")
+						{
+							$title=$row['title'];
+						}
+						else
+						{
+							$title=$row['name'];
+						}
+						
+						$desc=$row['desc'];
+						
+						if($row['fav']==1)
+						{
+							$html=$toid." Added to Favourites";	
+						}
+						if($row['lflag']==1 )
+						{
+							$html=$toid." Liked It";	
+						}						
+						if($row['fav']==1 && $row['lflag']==1 )
+						{
+							$html=$toid." Liked and Added to Favourites";	
+						}
+						
+				
+				
+					echo'<li><a id=vid'.$id.' href="setRecent.php?id='.$id.'&uid='.$uid.'"><img src="'.$thumbnail.'"></a><a href="setRecent.php?id='.$id.'&uid='.$uid.'" style="margin-left: 26px;"><h3 id=vid'.$id.'>',$title,'</h3></a><p>',$desc,'</p><div id="vidExtra" style="text-decoration:underline; color:#FFF; width:400px; margin: 104px 0px 0px 215px;">'.$html.'</div></li><div id="ftr" style="margin-bottom: 2%; margin-top:2%; background: -webkit-gradient(linear, 0 0, 100% 0, from(#666), to(#666), color-stop(50%, #c6c6c6));"></div>';
+				
 			
-			if($row['fav']==1)
-			{
-				$html=1;	
-			}
-			else
-			{
-				$html=0;	
-			}
-			
-			
-				echo'<li><a id=vid'.$id.' href="setRecent.php?id='.$id.'&uid='.$uid.'"><img src="'.$thumbnail.'"></a><a href="setRecent.php?id='.$id.'&uid='.$uid.'" style="margin-left: 26px;"><h3 id=vid'.$id.'>',$title,'</h3></a><p>',$desc,'</p><div id="vidExtra"><a href="##" title="Add to Favourites" id=',$id,' onClick="setFav(this.id)"><div style="height:20px;width:20px;float:left;border:none;margin-top:2px; margin-right:6px; margin-left:6px; background-image:url(img/star'.$html.'.png);background-repeat:no-repeat;background-size:20px;"></div></a><a href="##" title="Like" id=',$id,' onClick="setLike(this.id)"><div style="height:20px;width:20px;float:left;border:none;margin-top:2px; margin-right:6px; margin-left:8px; background-image:url(img/like.png);background-repeat:no-repeat;background-size:20px;"></div></a><a href="##" title="Add to Watch Later" id=',$id,' onClick="setWlater(this.id)"><div style="height:20px;width:20px;float:left;border:none;margin-top:2px; margin-left:6px; background-image:url(img/wlater.png);background-repeat:no-repeat;background-size:20px;"></div></a></div></li><div id="ftr" style="margin-bottom: 2%; margin-top:2%; background: -webkit-gradient(linear, 0 0, 100% 0, from(#666), to(#666), color-stop(50%, #c6c6c6));"></div>';
-            
-			
+					}
+				}
 			}
 			
 			
@@ -211,7 +232,7 @@ Do the following if you're using your customized build of modernizr (http://www.
             
         </ul>
         
-        <a href="##" onClick="loadVideos()" style="float:right; margin:0% 50% 1% 0%; text-decoration:none; color:#CCC; ">Load More</a>
+        <a href="" style="float:right; margin:0% 50% 1% 0%; text-decoration:none; color:#CCC; ">Load More</a>
     
     </div>
    

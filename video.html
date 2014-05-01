@@ -7,6 +7,11 @@
     <script src="js/video-js-4.4.3/video-js/video.js"></script>
     <script>
   		videojs.options.flash.swf = "http://example.com/path/to/video-js.swf"
+		
+		var xx=document.getElementById("abcd");
+		xx.innerHTML="<li>Watch Later (<?php echo $_SESSION['wlatercount']; ?>)</li>";
+		//alert("<li>Watch Later (<?php echo $_SESSION['wlatercount']; ?>)</li>");
+		
 	</script>
     
     
@@ -17,6 +22,12 @@
 </head>
 
 <body>
+
+	<ul id="abcd">
+    	
+        <li>Watch Later (<?php echo $_SESSION['wlatercount']; ?>)</li>;
+    
+    </ul>
 	
 	<video id="example_video_1" class="video-js vjs-default-skin" controls preload="auto" width="270" height="170" poster="video_gallery_videolb/thumbnails/IMG_00000014.jpg" data-setup='{"example_option":true}' autoplay>
  		<source src="video_gallery_videolb/video/Facebook Album Sync.mp4" type='video/mp4' />

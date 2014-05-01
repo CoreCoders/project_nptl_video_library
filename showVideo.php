@@ -89,10 +89,10 @@ Do the following if you're using your customized build of modernizr (http://www.
     <div id="side-panel">
     <ul>
     	<a href="main_page_videos.php" class="active-tab"><li>Videos</li></a>
-        <a href="main_page_fav.php"><li>Fovourites</li></a>
+        <a href="main_page_fav.php"><li>Fovourites (<?php echo $_SESSION['favcount']; ?>)</li></a>
         <a href="main_page_recent.php"><li>Recently Viewed</li></a>
-        <a href="main_page_wlater.php"><li>Watch Later</li></a>
-        <a href="#"><li>My Subscriptions</li></a>
+        <a href="main_page_wlater.php"><li>Watch Later (<?php echo $_SESSION['wlatercount']; ?>)</li></a>
+        <a href="main_page_subscriptions.php"><li>My Subscriptions</li></a>
     </ul>
     </div>
     
@@ -169,7 +169,7 @@ Do the following if you're using your customized build of modernizr (http://www.
 				
 			}
 			
-            echo '<video id=vid',$id,' class="video-js vjs-default-skin" controls preload="auto" width="640" height="385" poster="',$thumbnail,'" data-setup=\'{"example_option":true}\' autoplay><source src="video_gallery_videolb/',$original,'" type="video/mp4" /></video><h3>',$title,'</h3><div id="vCount" style="float:right; margin:-38px 115px 0px 0px; font-size:18px; color:#CCC;">'.$vCount.'</div><div id="vidExtra" style="height:25px; width: 100px; float:right; margin:-40px 0px 0px 540px; background-color:#333; border-radius:5px;"><a href="##" title="Add to Favourites" id=',$id,' onClick="setFav(this.id,\''.$uid.'\')"><div style="height:20px;width:20px;float:left;border:none;margin-top:2px; margin-right:6px; margin-left:6px; background-image:url(img/star'.$html.'.png);background-repeat:no-repeat;background-size:20px;"></div></a><a href="##" title="Like" id=',$id,' onClick="setLike(this.id,\''.$uid.'\')"><div style="height:20px;width:20px;float:left;border:none;margin-top:2px; margin-right:6px; margin-left:8px; background-image:url(img/like.png);background-repeat:no-repeat;background-size:20px;"></div></a><a href="##" title="Add to Watch Later" id=',$id,' onClick="setWlater(this.id,\''.$uid.'\')"><div style="height:20px;width:20px;float:left;border:none;margin-top:2px; margin-left:6px; background-image:url(img/wlater.png);background-repeat:no-repeat;background-size:20px;"></div></a></div><div id="likes" style="float:right; height:25px; width:100px; background-color:#CCC; text-align:center; margin:-20px 5px 0px 0px; font:1em/30px Arial, Helvetica, sans-serif; border-radius:0px 0px 5px 5px; color:#333;">Likes:'.$likes.'</div><p style="color:#CCC; overflow-wrap:break-word; margin-top:30px;">',$desc,'</p><div id="ftr" style="margin-bottom: 2%; margin-top:2%; background: -webkit-gradient(linear, 0 0, 100% 0, from(#666), to(#666), color-stop(50%, #c6c6c6));"></div>';
+            echo '<video id=vid',$id,' class="video-js vjs-default-skin" controls preload="auto" width="640" height="385" poster="',$thumbnail,'" data-setup=\'{"example_option":true}\' autoplay><source src="video_gallery_videolb/',$original,'" type="video/mp4" /></video><h3>',$title,'</h3><div id="vCount" style="float:right; margin:-38px 115px 0px 0px; font-size:18px; color:#CCC;">'.$vCount.'</div><div id="vidExtra" style="height:25px; width: 100px; float:right; margin:-40px 0px 0px 540px; background-color:#333; border-radius:5px;"><a href="##" title="Add to Favourites" id=',$id,' onClick="setFav(this.id,\''.$uid.'\')"><div style="height:20px;width:20px;float:left;border:none;margin-top:2px; margin-right:6px; margin-left:6px; background-image:url(img/star'.$html.'.png);background-repeat:no-repeat;background-size:20px;"></div></a><a href="##" title="Like" id=',$id,' onClick="setLike(this.id,\''.$uid.'\')"><div style="height:20px;width:20px;float:left;border:none;margin-top:2px; margin-right:6px; margin-left:8px; background-image:url(img/like.png);background-repeat:no-repeat;background-size:20px;"></div></a><a href="##" title="Add to Watch Later" id=',$id,' onClick="setWlater(this.id,\''.$uid.'\')"><div style="height:20px;width:20px;float:left;border:none;margin-top:2px; margin-left:6px; background-image:url(img/wlater.png);background-repeat:no-repeat;background-size:20px;"></div></a></div><div id="likes" style="float:right; height:25px; width:100px; background-color:#CCC; text-align:center; margin:-20px 5px 0px 0px; font:1em/30px Arial, Helvetica, sans-serif; border-radius:0px 0px 5px 5px; color:#333;">Likes:'.$likes.'</div><p style="color:#CCC; overflow-wrap:break-word; margin-top:50px;">',$desc,'</p><div id="ftr" style="margin-bottom: 2%; margin-top:2%; background: -webkit-gradient(linear, 0 0, 100% 0, from(#666), to(#666), color-stop(50%, #c6c6c6));"></div>';
 			
 			}
 			
@@ -180,7 +180,7 @@ Do the following if you're using your customized build of modernizr (http://www.
 			
 			
 			$topic=str_replace(",","%' or topic like '%",$topic);
-			$topic="topic like '%".$topic."'";
+			$topic="topic like '%".$topic."%'";
 			
 			$query="SELECT * FROM videos WHERE $topic";
 			
